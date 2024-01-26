@@ -1,44 +1,44 @@
 module.exports = function (sequelize, DataTypes) {
     const Track = sequelize.define("Track", {
-        trackid: {
+        TrackId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        name: {
+        Name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
 
-        albumid: {
+        AlbumId: {
             type: DataTypes.INTEGER,
             allowNull: false,
 
         },
-        mediatypeid: {
+        MediaTypeId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        genreid: {
+        GenreId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        composer: {
+        Composer: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: '',
         },
-        milliseconds: {
+        Milliseconds: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,
         },
-        bytes: {
+        Bytes: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,
         },
-        unitprice: {
+        UnitPrice: {
             type: DataTypes.FLOAT,
             allowNull: false,
             defaultValue: 0,
@@ -49,7 +49,8 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Track.associate = function(models) {
-        Track.hasOne(models.Genre, {foreignKey: 'genreid'});
+        Track.hasOne(models.Genre, {foreignKey: 'GenreId'});
+        Track.belongsTo(models.InvoiceLine, {foreignKey: 'TrackId'});
     }
 
     return Track;

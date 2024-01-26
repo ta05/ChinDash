@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     const Genre = sequelize.define("Genre", {
-        genreid: {
+        GenreId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        name: {
+        Name: {
             type: DataTypes.STRING
         },
         freezeTableName: true,
@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Genre.associate = function(models) {
-        Genre.belongsTo(models.Track, {foreignKey: 'trackid'});
+        Genre.belongsTo(models.Track, {foreignKey: 'TrackId'});
     }
 
     return Genre;
