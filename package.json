@@ -1,41 +1,15 @@
 {
-  "name": "dashboard",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "chindash",
+  "version": "1.0.0",
+  "description": "An album sales dashboard that allows the user to view and add album sale information",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "concurrently \"cd server && nodemon index.js\" \"cd client && npm run dev\"",
+    "dev-client": "concurrently \"cd client && npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.5",
-    "@mui/material": "^5.15.5",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.12",
-    "@mui/x-data-grid": "^6.19.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.0",
-    "express": "^4.18.2",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.9.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-pro-sidebar": "^1.1.0-alpha.1",
-    "react-router-dom": "^6.21.3",
-    "sequelize": "^6.35.2",
-    "styled-components": "^6.1.8"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
-  }
+  "author": "ta05",
+  "license": "ISC"
 }

@@ -2,7 +2,7 @@ import express, { json, urlencoded, static as static_ } from 'express';
 // import db from '../config/db.js';
 import cors from 'cors';
 import dotenv from "dotenv";
-import router from '../routes/index.js';
+import router from './routes/index.js';
 
 const app = express();
 const corsOptions = {
