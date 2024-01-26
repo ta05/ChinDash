@@ -7,7 +7,7 @@ const dbConfig = {
     PORT: process.env.DB_PORT,
     USER: process.env.DB_USER,
     PASSWORD: process.env.DB_PASS,
-    DB: "Chinook",
+    DB: process.env.DB_NAME,
     dialect: "mysql",
     pool: {
         max: 5,
