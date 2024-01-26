@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-    const Genre = sequelize.define("Genre", {
+const Genre = (sequelize, DataTypes) => {
+    const GenreModel = sequelize.define("Genre", {
         GenreId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -8,13 +8,16 @@ module.exports = function (sequelize, DataTypes) {
         Name: {
             type: DataTypes.STRING
         },
+    }, {
         freezeTableName: true,
         timestamps: false,
     });
 
-    Genre.associate = function(models) {
-        Genre.belongsTo(models.Track, {foreignKey: 'TrackId'});
+    GenreModel.associate = function(models) {
+        GenreModel.belongsTo(models.Track, {foreignKey: 'GenreId'});
     }
 
-    return Genre;
+    return GenreModel;
 };
+
+export default Genre;

@@ -1,15 +1,17 @@
-import dbConfig from "../config/db.config";
+import dbConfig from "../config/db.config.js";
 import { Sequelize, DataTypes } from "sequelize";
 import Genre from "./Genre.js";
 import Track from "./Track.js";
 import Invoice from "./Invoice.js";
 import InvoiceLine from "./InvoiceLine.js";
 
+
+// Create sequelize object
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     port: dbConfig.PORT,
     dialect: dbConfig.dialect,
-    operatorsAliases: false,
+    operatorsAliases: 0,
 
     pool: {
         max: dbConfig.pool.max,
@@ -19,6 +21,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     }
 });
 
+// Add models to db object
 const db = {}
 
 db.Sequelize = Sequelize;
@@ -29,4 +32,11 @@ db.Track = Track(sequelize, DataTypes);
 db.Invoice = Invoice(sequelize, DataTypes);
 db.InvoiceLine = InvoiceLine(sequelize, DataTypes);
 
-module.exports = db;
+// Create the associations between each model
+Object.keys(db).forEach((model) => {
+    if (db[model].associate) {
+        db[model].associate(db);
+    }
+})
+
+export default db;

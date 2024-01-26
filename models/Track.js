@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+const Track = (sequelize, DataTypes) => {
     const Track = sequelize.define("Track", {
         TrackId: {
             type: DataTypes.INTEGER,
@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 0,
         },
-
+    }, {
         freezeTableName: true,
         timestamps: false,
     });
@@ -55,3 +55,5 @@ module.exports = function (sequelize, DataTypes) {
 
     return Track;
 };
+
+export default Track;

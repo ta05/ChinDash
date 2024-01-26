@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+const Invoice = (sequelize, DataTypes) => {
     const Invoice = sequelize.define("Invoice", {
         InvoiceId: {
             type: DataTypes.INTEGER,
@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 0,
         },
-
+    }, {
         freezeTableName: true,
         timestamps: false,
     });
@@ -48,3 +48,5 @@ module.exports = function (sequelize, DataTypes) {
 
     return Invoice;
 };
+
+export default Invoice;
