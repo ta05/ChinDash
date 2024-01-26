@@ -1,6 +1,9 @@
 import dbConfig from "../config/db.config";
 import { Sequelize, DataTypes } from "sequelize";
-import GenreSold from "./Genre.js";
+import Genre from "./Genre.js";
+import Track from "./Track.js";
+import Invoice from "./Invoice.js";
+import InvoiceLine from "./InvoiceLine.js";
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
@@ -21,6 +24,9 @@ const db = {}
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.genresSold = GenreSold(sequelize, DataTypes);
+db.Genre = Genre(sequelize, DataTypes);
+db.Track = Track(sequelize, DataTypes);
+db.Invoice = Invoice(sequelize, DataTypes);
+db.InvoiceLine = InvoiceLine(sequelize, DataTypes);
 
 module.exports = db;
