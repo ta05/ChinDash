@@ -12,5 +12,9 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: false,
     });
 
+    Genre.associate = function(models) {
+        Genre.belongsTo(models.Track, {foreignKey: 'trackid'});
+    }
+
     return Genre;
 };
