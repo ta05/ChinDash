@@ -14,7 +14,7 @@ const Genre = (sequelize, DataTypes) => {
     });
 
     GenreModel.associate = function(models) {
-        GenreModel.belongsTo(models.Track, {foreignKey: 'GenreId'});
+        GenreModel.belongsTo(models.Track, {as: 'track', sourceKey: 'GenreId', foreignKey: 'GenreId'});
     }
 
     return GenreModel;

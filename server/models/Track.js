@@ -49,8 +49,8 @@ const Track = (sequelize, DataTypes) => {
     });
 
     Track.associate = function(models) {
-        Track.hasOne(models.Genre, {foreignKey: 'GenreId'});
-        Track.belongsTo(models.InvoiceLine, {foreignKey: 'TrackId'});
+        Track.hasOne(models.Genre, {as: 'genre', sourceKey: 'GenreId', foreignKey: 'GenreId'});
+        Track.belongsTo(models.InvoiceLine, {as: 'invoiceline', sourceKey: 'TrackId', foreignKey: 'TrackId'});
     }
 
     return Track;

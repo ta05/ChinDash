@@ -43,7 +43,7 @@ const Invoice = (sequelize, DataTypes) => {
     });
 
     Invoice.associate = function(models) {
-        Invoice.hasOne(models.InvoiceLine,{foreignKey: 'InvoiceId'});
+        Invoice.hasOne(models.InvoiceLine,{as: 'invoiceline', sourceKey: 'InvoiceId', foreignKey: 'InvoiceId'});
     }
 
     return Invoice;

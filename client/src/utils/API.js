@@ -6,4 +6,7 @@ export default {
     getGenres: function () {
         return axios.get(`${baseURL}/api/genre`);
     },
+    getTracks: function () {
+        return axios.get(`${baseURL}/api/track`);
+    }
 };
