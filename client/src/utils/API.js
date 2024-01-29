@@ -8,5 +8,8 @@ export default {
     },
     getTracks: function () {
         return axios.get(`${baseURL}/api/track`);
+    },
+    getGenreSales: function () {
+        return axios.get(`${baseURL}/api/invoice/sales`)
     }
 };
