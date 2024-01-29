@@ -18,7 +18,7 @@ export function getAllGenreSales(_req, res) {
                 as: 'track',
                 include: {
                     model: db.Genre,
-                    attributes: ['Name'],
+                    attributes: [],
                     as: 'genre',
                 }
             }
@@ -51,7 +51,7 @@ export function getGenreSales(req, res) {
                 as: 'track',
                 include: {
                     model: db.Genre,
-                    attributes: ['Name'],
+                    attributes: [],
                     as: 'genre',
                 }
             }
