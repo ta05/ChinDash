@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 import {
     HomeOutlined,
-    PeopleOutlined,
     ReceiptOutlined,
     ContactsOutlined,
     PersonOutlined,
@@ -20,6 +19,7 @@ import {
     TimelineOutlined,
     MenuOutlined,
     MapOutlined,
+    Paid,
 } from "@mui/icons-material";
 import { useState } from "react";
 
@@ -169,9 +169,9 @@ const Sidebar = () => {
                             isCollapsed={isCollapsed}
                         />
                         <Item
-                            title="Manage Team"
-                            to="/team"
-                            icon={<PeopleOutlined />}
+                            title="Genre Sales"
+                            to="/table"
+                            icon={<Paid />}
                             selected={selected}
                             setSelected={setSelected}
                             isCollapsed={isCollapsed}

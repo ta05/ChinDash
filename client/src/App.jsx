@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Topbar from "./pages/global/Topbar";
 import Sidebar from "./pages/global/Sidebar";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Team from "./pages/team/Team";
+import Table from "./pages/table/Table";
 import Invoices from "./pages/invoices/Invoices";
 import Contacts from "./pages/contacts/Contacts";
 import Bar from "./pages/bar/Bar";
@@ -29,7 +29,7 @@ function App() {
                             <Topbar />
                             <Routes>
                                 <Route path="/" element={<Dashboard />} />
-                                <Route path="/team" element={<Team />} />
+                                <Route path="/table" element={<Table />} />
                                 <Route
                                     path="/invoices"
                                     element={<Invoices />}
