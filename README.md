@@ -24,7 +24,7 @@ Within the `.env` file, you may also add a variable `PORT` for the server, but t
 
 In the server folder, create a `.env` file and create the following variable:
 
-- VITE_SERVER_BASE_URL=http://localhost:\<PORT>
+- VITE_SERVER_BASE_URL=ht<span>tp://</span>localhost:\<PORT>
 
 Make sure the `PORT` matches the `PORT` for the server. By default the server will run on port **3002**. If you create a `PORT` environmental variable in the server `.env` this must match the `VITE_SERVER_BASE_URL` port.
 
