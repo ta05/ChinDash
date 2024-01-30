@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import { tokens } from "../../theme";
+import Header from "../../components/Header";
 import API from "../../utils/API";
 
 const dateComparator = (v1, v2) => Date.parse(v1) - Date.parse(v2);
@@ -8,6 +10,9 @@ const dateComparator = (v1, v2) => Date.parse(v1) - Date.parse(v2);
 const Team = () => {
     const [genres, setGenres] = useState([]);
     const [genreSales, setGenreSales] = useState([]);
+
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
 
     const columns = [
         {
@@ -50,21 +55,24 @@ const Team = () => {
 
     return (
         <Box sx={{ height: 400, width: "100%" }}>
-            <DataGrid
-                rows={genreSales}
-                columns={columns}
-                getRowId={getRowId}
-                getRowHeight={() => "auto"}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 50,
+            <Header title="Genre Sales" subtitle="Monthly Sales" />
+            <Box>
+                <DataGrid
+                    rows={genreSales}
+                    columns={columns}
+                    getRowId={getRowId}
+                    getRowHeight={() => "auto"}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 24,
+                            },
                         },
-                    },
-                }}
-                pageSizeOptions={[50]}
-                disableRowSelectionOnClick
-            />
+                    }}
+                    pageSizeOptions={[24]}
+                    disableRowSelectionOnClick
+                />
+            </Box>
         </Box>
     );
 };
