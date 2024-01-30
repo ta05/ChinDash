@@ -26,7 +26,7 @@ In the server folder, create a `.env` file and create the following variable:
 
 - VITE_SERVER_BASE_URL=ht<span>tp://</span>localhost:\<PORT>
 
-Make sure the `PORT` matches the `PORT` for the server. By default the server will run on port **3002**. If you create a `PORT` environmental variable in the server `.env` this must match the `VITE_SERVER_BASE_URL` port.
+Make sure the `PORT` matches the `PORT` for the server (not the database port, `DB_PORT`). By default the server will run on port **3002**. If you create a `PORT` environmental variable in the server `.env` this must match the `VITE_SERVER_BASE_URL` port.
 
 ## Technology
 - [React.js](https://react.dev/)
