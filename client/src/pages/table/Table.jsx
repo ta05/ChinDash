@@ -41,16 +41,29 @@ const Table = () => {
         },
     ];
 
-    const loadGenreSales = () => {
-        API.getGenreSales()
+    const loadGenreSales = (signal) => {
+        API.getGenreSales(signal)
             .then((res) => {
                 setGenreSales(res.data);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err === "AbortError") {
+                    console.log("cancelled!");
+                } else {
+                    console.log(err);
+                }
+            });
     };
 
     useEffect(() => {
-        loadGenreSales();
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        loadGenreSales(signal);
+
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     return (
