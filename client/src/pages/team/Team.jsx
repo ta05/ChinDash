@@ -55,7 +55,7 @@ const Team = () => {
 
     return (
         <Box sx={{ height: 400, width: "100%" }}>
-            <Header title="Genre Sales" subtitle="Monthly Sales" />
+            <Header title="Monthly Genre Sales" />
             <Box>
                 <DataGrid
                     rows={genreSales}
@@ -65,11 +65,11 @@ const Team = () => {
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 24,
+                                pageSize: 30,
                             },
                         },
                     }}
-                    pageSizeOptions={[24]}
+                    pageSizeOptions={[30]}
                     disableRowSelectionOnClick
                 />
             </Box>
