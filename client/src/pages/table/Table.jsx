@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
+import { v4 as uuidv4 } from "uuid";
 import Header from "../../components/Header";
 import API from "../../utils/API";
 
@@ -11,10 +12,6 @@ const Table = () => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
-    const getRowId = () => {
-        return Math.floor(Math.random() * 100000000);
-    };
 
     const dateComparator = (v1, v2) => Date.parse(v1) - Date.parse(v2);
 
@@ -95,7 +92,7 @@ const Table = () => {
                 <DataGrid
                     rows={genreSales}
                     columns={columns}
-                    getRowId={getRowId}
+                    getRowId={uuidv4}
                     getRowHeight={() => "auto"}
                     initialState={{
                         pagination: {
