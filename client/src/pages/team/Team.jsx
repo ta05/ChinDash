@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import API from "../../utils/API";
 
+const dateComparator = (v1, v2) => Date.parse(v1) - Date.parse(v2);
+
 const Team = () => {
     const [genres, setGenres] = useState([]);
     const [genreSales, setGenreSales] = useState([]);
@@ -11,20 +13,21 @@ const Team = () => {
         {
             field: "YearMonth",
             headerName: "Date",
-            width: 150,
+            width: 250,
             editable: false,
+            sortComparator: dateComparator,
         },
         {
             field: "Genre",
             headerName: "Genre",
-            width: 150,
+            width: 250,
             editable: false,
         },
         {
             field: "UnitsSold",
             headerName: "Tracks Sold",
             type: "number",
-            width: 150,
+            width: 250,
             editable: false,
         },
     ];
@@ -51,14 +54,15 @@ const Team = () => {
                 rows={genreSales}
                 columns={columns}
                 getRowId={getRowId}
+                getRowHeight={() => "auto"}
                 initialState={{
                     pagination: {
                         paginationModel: {
-                            pageSize: 25,
+                            pageSize: 50,
                         },
                     },
                 }}
-                pageSizeOptions={[25]}
+                pageSizeOptions={[50]}
                 disableRowSelectionOnClick
             />
         </Box>
