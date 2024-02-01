@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LineChart from "../../components/LineChart";
 import API from "../../utils/API";
 
 const Line = () => {
     const [genreSales, setGenreSales] = useState([]);
+    const [genres, setGenres] = useState([]);
 
     const loadGenreSales = (signal) => {
         API.getGenreSales(signal)
@@ -19,11 +20,26 @@ const Line = () => {
             });
     };
 
+    const loadGenres = (signal) => {
+        API.getGenres(signal)
+            .then((res) => {
+                setGenres(res.data);
+            })
+            .catch((err) => {
+                if (err === "AbortError") {
+                    console.log("cancelled!");
+                } else {
+                    console.log(err);
+                }
+            });
+    };
+
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
 
         loadGenreSales(signal);
+        loadGenres(signal);
 
         return () => {
             controller.abort();
@@ -32,7 +48,7 @@ const Line = () => {
 
     return (
         <div>
-            <LineChart data={genreSales} />
+            <LineChart idList={genres} rawData={genreSales} />
         </div>
     );
 };

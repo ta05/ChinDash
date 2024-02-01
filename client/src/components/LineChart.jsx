@@ -3,10 +3,32 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { ResponsiveLine } from "@nivo/line";
 
-const LineChart = ({ data }) => {
+const LineChart = ({ idList, data, rawData }) => {
+    const formatData = (rawData) => {
+        // genreIndex maps the genre name to its index in the formattedData
+        const genreIndex = {};
+
+        // Loop through the idList to add each id to the formattedData array and fill the genreIndex object
+        const formattedData = idList.map(({ Name }, index) => {
+            genreIndex[Name] = index;
+            return { id: Name, data: [] };
+        });
+
+        // Loop through the rawData and add the data to formattedData
+        rawData.forEach(({ YearMonth, Genre, UnitsSold }) => {
+            formattedData[genreIndex[Genre]]["data"].push({
+                x: YearMonth,
+                y: UnitsSold,
+            });
+        });
+
+        return formattedData;
+    };
+
+    // TODO: Debug ResponsiveLine not displaying
     return (
         <ResponsiveLine
-            data={data}
+            data={data ? data : formatData(rawData)}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
             xScale={{ type: "point" }}
             yScale={{
