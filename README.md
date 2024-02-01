@@ -32,8 +32,9 @@ Make sure the `PORT` matches the `PORT` for the server (not the database port, `
 - [React.js](https://react.dev/)
 - [Node.js](https://nodejs.org/en)
 - [MySQL](https://www.mysql.com/)
-- [Material UI](https://mui.com/material-ui/) for the Charts, Graphs and some components.
+- [Material UI](https://mui.com/material-ui/) for the Icons, Data Grid and some other components.
 - [Sequelize](https://sequelize.org/) for ORM.
+- [Nivo](https://nivo.rocks/) for Chart components
 
 ## Credits
 
