@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 import LineChart from "../../components/LineChart";
 import API from "../../utils/API";
 
@@ -47,9 +48,9 @@ const Line = () => {
     }, []);
 
     return (
-        <div>
+        <Box sx={{ height: "75vh" }}>
             <LineChart idList={genres} rawData={genreSales} />
-        </div>
+        </Box>
     );
 };
 
