@@ -45,7 +45,7 @@ const LineChart = ({ idList, data, rawData }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: "transportation",
+                legend: "Month",
                 legendOffset: 36,
                 legendPosition: "middle",
             }}
@@ -53,11 +53,11 @@ const LineChart = ({ idList, data, rawData }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: "count",
+                legend: "Tracks Sold",
                 legendOffset: -40,
                 legendPosition: "middle",
             }}
-            pointSize={10}
+            pointSize={4}
             pointColor={{ theme: "background" }}
             pointBorderWidth={2}
             pointBorderColor={{ from: "serieColor" }}
