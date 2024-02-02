@@ -21,7 +21,7 @@ const LineChart = ({ idList, data, rawData }) => {
                 y: UnitsSold,
             });
         });
-
+        console.log(formattedData);
         return formattedData;
     };
 
@@ -30,23 +30,30 @@ const LineChart = ({ idList, data, rawData }) => {
         <ResponsiveLine
             data={data ? data : formatData(rawData)}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-            xScale={{ type: "point" }}
+            xFormat="time:%b %Y"
+            xScale={{
+                type: "time",
+                format: "%b %Y",
+                precision: "day",
+                useUTC: false,
+            }}
             yScale={{
                 type: "linear",
                 min: "auto",
                 max: "auto",
-                stacked: true,
                 reverse: false,
             }}
             yFormat=" >-.2f"
             axisTop={null}
             axisRight={null}
             axisBottom={{
+                format: "%b %Y",
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                // tickValues: "every 3 months",
+                tickRotation: 30,
                 legend: "Month",
-                legendOffset: 36,
+                legendOffset: 45,
                 legendPosition: "middle",
             }}
             axisLeft={{
