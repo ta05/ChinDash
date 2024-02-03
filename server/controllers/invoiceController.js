@@ -1,6 +1,6 @@
 import db from "../models/index.js";
 
-export function getAllGenreSales(_req, res) {
+export function getAllMonthlyGenreSales(_req, res) {
     db.Invoice.findAll({
         attributes: [
             [db.sequelize.fn('DATE_FORMAT', db.sequelize.col('InvoiceDate'), '%b %Y'), 'YearMonth'],
@@ -33,7 +33,7 @@ export function getAllGenreSales(_req, res) {
     .catch((err) => res.status(422).json(err));
 }
 
-export function getGenreSales(req, res) {
+export function getOneMonthlyGenreSales(req, res) {
     db.Invoice.findAll({
         attributes: [
             [db.sequelize.fn('DATE_FORMAT', db.sequelize.col('InvoiceDate'), '%b %Y'), 'YearMonth'],

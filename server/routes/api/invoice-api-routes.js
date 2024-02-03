@@ -1,13 +1,13 @@
 import express from "express";
-import { getAllGenreSales, getGenreSales } from "../../controllers/invoiceController.js";
+import { getAllMonthlyGenreSales, getOneMonthlyGenreSales } from "../../controllers/invoiceController.js";
 
 const router = express.Router();
 
 router.route("/sales")
-    .get(getAllGenreSales);
+    .get(getAllMonthlyGenreSales);
 
 router.route("/sales/:genre")
-    .get(getGenreSales);
+    .get(getOneMonthlyGenreSales);
 
 
 export default router;
