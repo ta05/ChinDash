@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import LineChart from "../../components/LineChart";
+import Header from "../../components/Header";
 import API from "../../utils/API";
 
 const Line = () => {
@@ -48,8 +49,12 @@ const Line = () => {
     }, []);
 
     return (
-        <Box sx={{ height: "75vh" }}>
-            <LineChart idList={genres} rawData={genreSales} />
+        <Box sx={{ margin: "20px" }}>
+            <Header title="Top Genres" />
+
+            <Box sx={{ height: "75vh" }}>
+                <LineChart idList={genres} rawData={genreSales} />
+            </Box>
         </Box>
     );
 };

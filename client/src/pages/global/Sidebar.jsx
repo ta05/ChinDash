@@ -65,7 +65,7 @@ const Sidebar = () => {
             sx={{
                 display: "flex",
                 height: "100%",
-                minHeight: "100vh",
+                minHeight: "110vh",
             }}
         >
             <ProSidebar
