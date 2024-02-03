@@ -8,7 +8,7 @@ const Line = () => {
     const [genres, setGenres] = useState([]);
 
     const loadGenreSales = (signal) => {
-        API.getGenreSales(signal)
+        API.getGenreMonthlySales(signal)
             .then((res) => {
                 setGenreSales(res.data);
             })
@@ -21,8 +21,8 @@ const Line = () => {
             });
     };
 
-    const loadGenres = (signal) => {
-        API.getGenres(signal)
+    const loadTopGenres = (limit, signal) => {
+        API.getTopGenreSales(limit, signal)
             .then((res) => {
                 setGenres(res.data);
             })
@@ -40,7 +40,7 @@ const Line = () => {
         const signal = controller.signal;
 
         loadGenreSales(signal);
-        loadGenres(signal);
+        loadTopGenres(10, signal);
 
         return () => {
             controller.abort();

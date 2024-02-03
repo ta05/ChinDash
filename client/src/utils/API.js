@@ -9,7 +9,10 @@ export default {
     getTracks: function () {
         return axios.get(`${baseURL}/api/track`);
     },
-    getGenreSales: function (signal) {
+    getTopGenreSales: function (limit, signal) {
+        return axios.get(`${baseURL}/api/invoiceline/sales/${limit}`, {signal: signal})
+    },
+    getGenreMonthlySales: function (signal) {
         return axios.get(`${baseURL}/api/invoice/sales`, {signal: signal})
     }
 };

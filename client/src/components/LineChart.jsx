@@ -4,31 +4,71 @@ import { tokens } from "../theme";
 import { ResponsiveLine } from "@nivo/line";
 
 const LineChart = ({ idList, data, rawData }) => {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+
     const formatData = (rawData) => {
-        // genreIndex maps the genre name to its index in the formattedData
+        // genreIndex maps the genre name to its index in the lineData
         const genreIndex = {};
 
-        // Loop through the idList to add each id to the formattedData array and fill the genreIndex object
-        const formattedData = idList.map(({ Name }, index) => {
-            genreIndex[Name] = index;
-            return { id: Name, data: [] };
+        // Loop through the idList to add each id to the lineData array and fill the genreIndex object
+        const lineData = idList.map(({ Genre }, index) => {
+            genreIndex[Genre] = index;
+            return { id: Genre, data: [] };
         });
 
-        // Loop through the rawData and add the data to formattedData
-        rawData.forEach(({ YearMonth, Genre, UnitsSold }) => {
-            formattedData[genreIndex[Genre]]["data"].push({
-                x: YearMonth,
-                y: UnitsSold,
+        // Loop through the rawData and add the data to lineData
+        rawData
+            .filter(({ Genre }) => Genre in genreIndex)
+            .forEach(({ YearMonth, Genre, UnitsSold }) => {
+                lineData[genreIndex[Genre]]["data"].push({
+                    x: YearMonth,
+                    y: UnitsSold,
+                });
             });
-        });
-        console.log(formattedData);
-        return formattedData;
+
+        console.log(lineData);
+
+        return lineData;
     };
 
-    // TODO: Debug ResponsiveLine not displaying
     return (
         <ResponsiveLine
             data={data ? data : formatData(rawData)}
+            theme={{
+                axis: {
+                    domain: {
+                        line: {
+                            stroke: colors.gray[100],
+                        },
+                    },
+                    legend: {
+                        text: {
+                            fill: colors.gray[100],
+                        },
+                    },
+                    ticks: {
+                        line: {
+                            stroke: colors.gray[100],
+                            strokeWidth: 1,
+                        },
+                        text: {
+                            fill: colors.gray[100],
+                        },
+                    },
+                },
+                legends: {
+                    text: {
+                        fill: colors.gray[100],
+                    },
+                },
+                tooltip: {
+                    container: {
+                        color: colors.primary[500],
+                    },
+                },
+            }}
+            colors={{ scheme: "paired" }}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
             xFormat="time:%b %Y"
             xScale={{
@@ -50,7 +90,6 @@ const LineChart = ({ idList, data, rawData }) => {
                 format: "%b %Y",
                 tickSize: 5,
                 tickPadding: 5,
-                // tickValues: "every 3 months",
                 tickRotation: 30,
                 legend: "Month",
                 legendOffset: 45,

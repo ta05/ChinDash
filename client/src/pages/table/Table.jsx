@@ -39,7 +39,7 @@ const Table = () => {
     ];
 
     const loadGenreSales = (signal) => {
-        API.getGenreSales(signal)
+        API.getGenreMonthlySales(signal)
             .then((res) => {
                 setGenreSales(res.data);
             })
