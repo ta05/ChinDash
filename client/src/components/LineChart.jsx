@@ -79,7 +79,7 @@ const LineChart = ({ idList, data, rawData }) => {
             }}
             yScale={{
                 type: "linear",
-                min: "auto",
+                min: 0,
                 max: "auto",
                 reverse: false,
             }}
