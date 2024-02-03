@@ -60,6 +60,7 @@ const LineChart = ({ idList, data, rawData }) => {
                 legends: {
                     text: {
                         fill: colors.gray[100],
+                        fontSize: 8,
                     },
                 },
                 tooltip: {
@@ -114,11 +115,11 @@ const LineChart = ({ idList, data, rawData }) => {
                     anchor: "bottom-right",
                     direction: "column",
                     justify: false,
-                    translateX: 100,
+                    translateX: 120,
                     translateY: 0,
-                    itemsSpacing: 0,
+                    itemsSpacing: 5,
                     itemDirection: "left-to-right",
-                    itemWidth: 80,
+                    itemWidth: 110,
                     itemHeight: 20,
                     itemOpacity: 0.75,
                     symbolSize: 12,
