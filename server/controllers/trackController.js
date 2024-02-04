@@ -19,4 +19,18 @@ export function getAll(_req, res) {
     })
         .then((dbTrack) => res.json(dbTrack))
         .catch((err) => res.status(422).json(err));
-}
+};
+
+export function getTrack(req, res) {
+    db.Track.findAll({
+        attributes: [
+            'TrackId',
+            'Name',
+        ],
+        where: {
+            Name: req.params.name,
+        }
+    })
+        .then((dbTrack) => res.json(dbTrack))
+        .catch((err) => res.status(422).json(err));
+};
