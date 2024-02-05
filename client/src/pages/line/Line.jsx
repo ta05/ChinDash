@@ -25,7 +25,7 @@ const Line = () => {
     const loadTopGenres = (limit, signal) => {
         API.getTopGenreSales(limit, signal)
             .then((res) => {
-                setGenres(res.data);
+                setGenres(res.data.map((genreObj) => genreObj["Genre"]));
             })
             .catch((err) => {
                 if (err === "AbortError") {
@@ -53,7 +53,14 @@ const Line = () => {
             <Header title="Top Genres" />
 
             <Box sx={{ height: "75vh" }}>
-                <LineChart idList={genres} rawData={genreSales} />
+                <LineChart
+                    series={genres}
+                    data={genreSales}
+                    label="Genre"
+                    X="YearMonth"
+                    Y="UnitsSold"
+                    isFormatted={false}
+                />
             </Box>
         </Box>
     );

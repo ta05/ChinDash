@@ -3,29 +3,24 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { ResponsiveLine } from "@nivo/line";
 
-const LineChart = ({ idList, data, rawData }) => {
+const LineChart = ({ series, data, label, X, Y, isFormatted }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const formatData = (rawData) => {
-        // genreIndex maps the genre name to its index in the lineData
-        const genreIndex = {};
-
-        // Loop through the idList to add each id to the lineData array and fill the genreIndex object
-        const lineData = idList.map(({ Genre }, index) => {
-            genreIndex[Genre] = index;
-            return { id: Genre, data: [] };
+    // This function formats the data for plotting, if the data isn't in the correct format
+    const formatData = (data) => {
+        // Loop through the series to add each label as an id to the lineData array
+        const lineData = series.map((label) => {
+            return { id: label, data: [] };
         });
 
-        // Loop through the rawData and add the data to lineData
-        rawData
-            .filter(({ Genre }) => Genre in genreIndex)
-            .forEach(({ YearMonth, Genre, UnitsSold }) => {
-                lineData[genreIndex[Genre]]["data"].push({
-                    x: YearMonth,
-                    y: UnitsSold,
-                });
+        // Loop through the dataset and add the x and y to lineData
+        data.filter((row) => series.includes(row[label])).forEach((row) => {
+            lineData[series.indexOf(row[label])]["data"].push({
+                x: row[X],
+                y: row[Y],
             });
+        });
 
         console.log(lineData);
 
@@ -34,7 +29,7 @@ const LineChart = ({ idList, data, rawData }) => {
 
     return (
         <ResponsiveLine
-            data={data ? data : formatData(rawData)}
+            data={isFormatted ? data : formatData(data)}
             theme={{
                 axis: {
                     domain: {
