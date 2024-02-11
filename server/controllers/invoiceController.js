@@ -68,3 +68,14 @@ export function getOneMonthlyGenreSales(req, res) {
     .then((dbInvoice) => res.json(dbInvoice))
     .catch((err) => res.status(422).json(err));
 }
+
+export function addInvoice(req, res) {
+    db.Invoice.create({
+        InvoiceId: req.body.invoiceId,
+        CustomerId: req.body.customerId,
+        InvoiceDate: req.body.invoiceDate,
+        Total: req.body.total,
+    })
+    .then((dbInvoice) => res.json(dbInvoice))
+    .catch((err) => res.status(422).json(err));
+}

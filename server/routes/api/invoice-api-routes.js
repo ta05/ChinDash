@@ -1,7 +1,10 @@
 import express from "express";
-import { getAllMonthlyGenreSales, getOneMonthlyGenreSales } from "../../controllers/invoiceController.js";
+import { addInvoice, getAllMonthlyGenreSales, getOneMonthlyGenreSales } from "../../controllers/invoiceController.js";
 
 const router = express.Router();
+
+router.route("/")
+    .post(addInvoice);
 
 router.route("/sales")
     .get(getAllMonthlyGenreSales);
