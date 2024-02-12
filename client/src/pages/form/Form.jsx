@@ -6,10 +6,9 @@ import {
     Select,
     MenuItem,
     useMediaQuery,
+    FormControl,
 } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
-import { Formik } from "formik";
-import * as yup from "yup";
 import Header from "../../components/Header";
 import API from "../../utils/API";
 
@@ -22,14 +21,6 @@ const Form = () => {
         trackId: 0,
         track: "",
         unitPrice: 0,
-    });
-
-    const [quantity, setQuantity] = useState(1);
-    const [selectedTrack, setSelectedTrack] = useState("");
-    const [unitPrice, setUnitPrice] = useState(0);
-
-    const userSchema = yup.object().shape({
-        quantity: yup.number().required("required"),
     });
 
     const handleFormSubmit = (event) => {
@@ -72,8 +63,6 @@ const Form = () => {
             ...formObject,
             quantity: event.target.value,
         });
-
-        setQuantity(event.target.value);
     };
 
     const handleTrackChange = (event, child) => {
@@ -83,9 +72,6 @@ const Form = () => {
             trackId: child.props.trackid,
             unitPrice: parseFloat(child.props.unitprice),
         });
-
-        setSelectedTrack(event.target.value);
-        setUnitPrice(parseFloat(child.props.unitprice));
     };
 
     const loadTracks = (signal) => {
@@ -126,49 +112,53 @@ const Form = () => {
                         },
                     }}
                 >
-                    <InputLabel id="quantity-label">Quantity</InputLabel>
-                    <Select
-                        labelId="quantity-label"
-                        id="quantity"
-                        value={formObject.quantity}
-                        onChange={handleQuantityChange}
-                        autoWidth
-                        label="quantity"
-                        MenuProps={{
-                            PaperProps: { style: { maxHeight: "20%" } },
-                        }}
-                    >
-                        {[...Array(99).keys()].map((i) => (
-                            <MenuItem key={i + 1} value={i + 1}>
-                                {i + 1}
-                            </MenuItem>
-                        ))}
-                    </Select>
+                    <FormControl>
+                        <InputLabel id="track-label">Track</InputLabel>
+                        <Select
+                            labelId="track-label"
+                            id="track"
+                            value={formObject.track}
+                            onChange={handleTrackChange}
+                            autoWidth
+                            label="Select Track"
+                            MenuProps={{
+                                PaperProps: { style: { maxHeight: "33%" } },
+                            }}
+                        >
+                            {tracks.map(({ TrackId, Name, UnitPrice }) => (
+                                <MenuItem
+                                    key={TrackId}
+                                    value={Name}
+                                    trackid={TrackId}
+                                    unitprice={UnitPrice}
+                                >
+                                    {Name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
 
-                    <InputLabel id="track-label">Track</InputLabel>
-                    <Select
-                        labelId="track-label"
-                        id="track"
-                        value={formObject.track}
-                        onChange={handleTrackChange}
-                        autoWidth
-                        label="Select Track"
-                        defaultValue=""
-                        MenuProps={{
-                            PaperProps: { style: { maxHeight: "33%" } },
-                        }}
-                    >
-                        {tracks.map(({ TrackId, Name, UnitPrice }) => (
-                            <MenuItem
-                                key={TrackId}
-                                value={Name}
-                                trackid={TrackId}
-                                unitprice={UnitPrice}
-                            >
-                                {Name}
-                            </MenuItem>
-                        ))}
-                    </Select>
+                    <FormControl>
+                        <InputLabel id="quantity-label">Quantity</InputLabel>
+                        <Select
+                            labelId="quantity-label"
+                            id="quantity"
+                            value={formObject.quantity}
+                            onChange={handleQuantityChange}
+                            autoWidth
+                            label="quantity"
+                            MenuProps={{
+                                PaperProps: { style: { maxHeight: "20%" } },
+                            }}
+                        >
+                            {[...Array(99).keys()].map((i) => (
+                                <MenuItem key={i + 1} value={i + 1}>
+                                    {i + 1}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+
                     <div>
                         $
                         {(formObject.quantity * formObject.unitPrice).toFixed(
@@ -176,7 +166,22 @@ const Form = () => {
                         )}
                     </div>
                 </Box>
-                <Button onClick={handleFormSubmit}>Purchase</Button>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "end",
+                        marginTop: "20px",
+                    }}
+                >
+                    <Button
+                        type="submit"
+                        color="secondary"
+                        variant="contained"
+                        onClick={handleFormSubmit}
+                    >
+                        Purchase
+                    </Button>
+                </Box>
             </form>
         </Box>
     );

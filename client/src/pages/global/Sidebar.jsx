@@ -11,7 +11,7 @@ import {
     HomeOutlined,
     ReceiptOutlined,
     ContactsOutlined,
-    PersonOutlined,
+    Album,
     CalendarTodayOutlined,
     HelpOutlined,
     BarChartOutlined,
@@ -177,73 +177,17 @@ const Sidebar = () => {
                             isCollapsed={isCollapsed}
                         />
                         <Item
-                            title="Contacts Information"
-                            to="/contacts"
-                            icon={<ContactsOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="Invoices Balances"
-                            to="/invoices"
-                            icon={<ReceiptOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="Profile Form"
+                            title="Buy Tracks"
                             to="/form"
-                            icon={<PersonOutlined />}
+                            icon={<Album />}
                             selected={selected}
                             setSelected={setSelected}
                             isCollapsed={isCollapsed}
                         />
                         <Item
-                            title="Calendar"
-                            to="/calendar"
-                            icon={<CalendarTodayOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="FAQ Page"
-                            to="/faq"
-                            icon={<HelpOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="Bar Chart"
-                            to="/bar"
-                            icon={<BarChartOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="Pie Chart"
-                            to="/pie"
-                            icon={<PieChartOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="Line Chart"
+                            title="Top Genres"
                             to="/line"
                             icon={<TimelineOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                            isCollapsed={isCollapsed}
-                        />
-                        <Item
-                            title="Geography Chart"
-                            to="/geography"
-                            icon={<MapOutlined />}
                             selected={selected}
                             setSelected={setSelected}
                             isCollapsed={isCollapsed}
