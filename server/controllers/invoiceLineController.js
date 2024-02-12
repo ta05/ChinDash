@@ -52,6 +52,7 @@ export function getTopGenreSales(req, res) {
 };
 
 export function addInvoiceLine(req, res) {
+    
     db.InvoiceLine.create({
         InvoiceLineId: req.body.invoiceLineId,
         InvoiceId: req.body.invoiceId,
@@ -59,6 +60,9 @@ export function addInvoiceLine(req, res) {
         UnitPrice: req.body.unitPrice,
         Quantity: req.body.quantity,
     })
-    .then((dbInvoiceLine) => res.json(dbInvoiceLine))
+    .then((dbInvoiceLine) => {
+        res.status(200);
+        res.json(dbInvoiceLine.get({plain: true}));
+    })
     .catch((err) => res.status(422).json(err));
 }

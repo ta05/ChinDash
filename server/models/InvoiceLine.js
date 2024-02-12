@@ -1,17 +1,17 @@
 const InvoiceLine = (sequelize, DataTypes) => {
     const InvoiceLine = sequelize.define("InvoiceLine", {
         InvoiceLineId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
         },
         InvoiceId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         TrackId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         UnitPrice: {
             type: DataTypes.FLOAT,

@@ -28,22 +28,22 @@ USE `Chinook`;
 ********************************************************************************/
 CREATE TABLE `Album`
 (
-    `AlbumId` INT NOT NULL,
+    `AlbumId` NVARCHAR(40) NOT NULL,
     `Title` NVARCHAR(160) NOT NULL,
-    `ArtistId` INT NOT NULL,
+    `ArtistId` NVARCHAR(40) NOT NULL,
     CONSTRAINT `PK_Album` PRIMARY KEY  (`AlbumId`)
 );
 
 CREATE TABLE `Artist`
 (
-    `ArtistId` INT NOT NULL,
+    `ArtistId` NVARCHAR(40) NOT NULL,
     `Name` NVARCHAR(120),
     CONSTRAINT `PK_Artist` PRIMARY KEY  (`ArtistId`)
 );
 
 CREATE TABLE `Customer`
 (
-    `CustomerId` INT NOT NULL,
+    `CustomerId` NVARCHAR(40) NOT NULL,
     `FirstName` NVARCHAR(40) NOT NULL,
     `LastName` NVARCHAR(20) NOT NULL,
     `Company` NVARCHAR(80),
@@ -55,17 +55,17 @@ CREATE TABLE `Customer`
     `Phone` NVARCHAR(24),
     `Fax` NVARCHAR(24),
     `Email` NVARCHAR(60) NOT NULL,
-    `SupportRepId` INT,
+    `SupportRepId` NVARCHAR(40),
     CONSTRAINT `PK_Customer` PRIMARY KEY  (`CustomerId`)
 );
 
 CREATE TABLE `Employee`
 (
-    `EmployeeId` INT NOT NULL,
+    `EmployeeId` NVARCHAR(40) NOT NULL,
     `LastName` NVARCHAR(20) NOT NULL,
     `FirstName` NVARCHAR(20) NOT NULL,
     `Title` NVARCHAR(30),
-    `ReportsTo` INT,
+    `ReportsTo` NVARCHAR(40),
     `BirthDate` DATETIME,
     `HireDate` DATETIME,
     `Address` NVARCHAR(70),
@@ -81,15 +81,15 @@ CREATE TABLE `Employee`
 
 CREATE TABLE `Genre`
 (
-    `GenreId` INT NOT NULL,
+    `GenreId` NVARCHAR(40) NOT NULL,
     `Name` NVARCHAR(120),
     CONSTRAINT `PK_Genre` PRIMARY KEY  (`GenreId`)
 );
 
 CREATE TABLE `Invoice`
 (
-    `InvoiceId` INT NOT NULL,
-    `CustomerId` INT NOT NULL,
+    `InvoiceId` NVARCHAR(40) NOT NULL,
+    `CustomerId` NVARCHAR(40) NOT NULL,
     `InvoiceDate` DATETIME NOT NULL,
     `BillingAddress` NVARCHAR(70),
     `BillingCity` NVARCHAR(40),
@@ -102,9 +102,9 @@ CREATE TABLE `Invoice`
 
 CREATE TABLE `InvoiceLine`
 (
-    `InvoiceLineId` INT NOT NULL,
-    `InvoiceId` INT NOT NULL,
-    `TrackId` INT NOT NULL,
+    `InvoiceLineId` NVARCHAR(40) NOT NULL,
+    `InvoiceId` NVARCHAR(40) NOT NULL,
+    `TrackId` NVARCHAR(40) NOT NULL,
     `UnitPrice` NUMERIC(10,2) NOT NULL,
     `Quantity` INT NOT NULL,
     CONSTRAINT `PK_InvoiceLine` PRIMARY KEY  (`InvoiceLineId`)
@@ -112,32 +112,32 @@ CREATE TABLE `InvoiceLine`
 
 CREATE TABLE `MediaType`
 (
-    `MediaTypeId` INT NOT NULL,
+    `MediaTypeId` NVARCHAR(40) NOT NULL,
     `Name` NVARCHAR(120),
     CONSTRAINT `PK_MediaType` PRIMARY KEY  (`MediaTypeId`)
 );
 
 CREATE TABLE `Playlist`
 (
-    `PlaylistId` INT NOT NULL,
+    `PlaylistId` NVARCHAR(40) NOT NULL,
     `Name` NVARCHAR(120),
     CONSTRAINT `PK_Playlist` PRIMARY KEY  (`PlaylistId`)
 );
 
 CREATE TABLE `PlaylistTrack`
 (
-    `PlaylistId` INT NOT NULL,
-    `TrackId` INT NOT NULL,
+    `PlaylistId` NVARCHAR(40) NOT NULL,
+    `TrackId` NVARCHAR(40) NOT NULL,
     CONSTRAINT `PK_PlaylistTrack` PRIMARY KEY  (`PlaylistId`, `TrackId`)
 );
 
 CREATE TABLE `Track`
 (
-    `TrackId` INT NOT NULL,
+    `TrackId` NVARCHAR(40) NOT NULL,
     `Name` NVARCHAR(200) NOT NULL,
-    `AlbumId` INT,
-    `MediaTypeId` INT NOT NULL,
-    `GenreId` INT,
+    `AlbumId` NVARCHAR(40),
+    `MediaTypeId` NVARCHAR(40) NOT NULL,
+    `GenreId` NVARCHAR(40),
     `Composer` NVARCHAR(220),
     `Milliseconds` INT NOT NULL,
     `Bytes` INT,

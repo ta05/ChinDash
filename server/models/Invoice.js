@@ -1,12 +1,12 @@
 const Invoice = (sequelize, DataTypes) => {
     const Invoice = sequelize.define("Invoice", {
         InvoiceId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
         },
         CustomerId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         InvoiceDate: {

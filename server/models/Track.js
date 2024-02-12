@@ -1,8 +1,8 @@
 const Track = (sequelize, DataTypes) => {
     const Track = sequelize.define("Track", {
         TrackId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.STRING,
+            allowNull: false,
             primaryKey: true,
         },
         Name: {
@@ -11,16 +11,16 @@ const Track = (sequelize, DataTypes) => {
         },
 
         AlbumId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
 
         },
         MediaTypeId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         GenreId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         Composer: {

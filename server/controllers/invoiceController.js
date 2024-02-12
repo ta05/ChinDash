@@ -70,12 +70,16 @@ export function getOneMonthlyGenreSales(req, res) {
 }
 
 export function addInvoice(req, res) {
+    console.log(req.body);
     db.Invoice.create({
         InvoiceId: req.body.invoiceId,
         CustomerId: req.body.customerId,
         InvoiceDate: req.body.invoiceDate,
         Total: req.body.total,
     })
-    .then((dbInvoice) => res.json(dbInvoice))
+    .then((dbInvoice) => {
+        res.status(200);
+        res.json(dbInvoice.get({plain: true}));
+    })
     .catch((err) => res.status(422).json(err));
 }

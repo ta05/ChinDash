@@ -1,8 +1,8 @@
 const Genre = (sequelize, DataTypes) => {
     const GenreModel = sequelize.define("Genre", {
         GenreId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.STRING,
+            allowNull: false,
             primaryKey: true,
         },
         Name: {
