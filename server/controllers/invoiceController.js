@@ -73,7 +73,6 @@ export function addInvoice(req, res) {
     console.log(req.body);
     db.Invoice.create({
         InvoiceId: req.body.invoiceId,
-        CustomerId: req.body.customerId,
         InvoiceDate: req.body.invoiceDate,
         Total: req.body.total,
     })

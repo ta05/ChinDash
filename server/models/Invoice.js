@@ -7,7 +7,7 @@ const Invoice = (sequelize, DataTypes) => {
         },
         CustomerId: {
             type: DataTypes.STRING,
-            allowNull: false,
+            defaultValue: "00000000-0000-0000-0000-000000000000"
         },
         InvoiceDate: {
             type: DataTypes.DATE,

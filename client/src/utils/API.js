@@ -14,5 +14,11 @@ export default {
     },
     getGenreMonthlySales: function (signal) {
         return axios.get(`${baseURL}/api/invoice/sales`, {signal})
-    }
+    },
+    addInvoice: function (invoiceData) {
+        return axios.post(`${baseURL}/api/invoice`, invoiceData)
+    },
+    addInvoiceLine: function (invoiceLineData) {
+        return axios.post(`${baseURL}/api/invoiceline`, invoiceLineData)
+    },
 };

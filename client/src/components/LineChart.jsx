@@ -27,6 +27,7 @@ const LineChart = ({ series, data, label, X, Y, isFormatted }) => {
         return lineData;
     };
 
+    // TODO: pass in configurations for the Line Chart from the parent component
     return (
         <ResponsiveLine
             data={isFormatted ? data : formatData(data)}
