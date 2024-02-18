@@ -28,6 +28,19 @@ In the server folder, create a `.env` file and create the following variable:
 
 Make sure the `PORT` matches the `PORT` for the server (not the database port, `DB_PORT`). By default the server will run on port **3002**. If you create a `PORT` environmental variable in the server `.env` this must match the `VITE_SERVER_BASE_URL` port.
 
+## Images
+
+
+<img src="./images/Table.png"/>
+
+<br>
+
+<img src="./images/Line_Chart.png"/>
+
+<br>
+<img src="./images/Form.png"/>
+
+
 ## Technology
 - [React.js](https://react.dev/)
 - [Node.js](https://nodejs.org/en)
